@@ -1,3 +1,5 @@
+import sys
+from termcolor import colored
 
 def drawBoard(field):
     for row in range(13):
@@ -30,10 +32,10 @@ while(True):
         if currentField[moveColumn][moveRow] == ' ':
             #If player 1's turn
             if player==1:
-                currentField[moveColumn][moveRow]='X'
+                currentField[moveColumn][moveRow]=colored('O','red')
                 #check for 4 vertical across
                 for row in range(6,-1,-1):
-                    if currentField[moveColumn][row]=='X':
+                    if currentField[moveColumn][row]==colored('O','red'):
                         verticalCounter+=1
                         if verticalCounter==4:
                             break
@@ -41,7 +43,7 @@ while(True):
                         verticalCounter = 0
                 #check for 4 horizontal across
                 for col in range(6,-1,-1):
-                    if currentField[col][moveRow]=='X':
+                    if currentField[col][moveRow]==colored('O','red'):
                         horizontalCounter+=1
                         if horizontalCounter==4:
                             break
@@ -54,7 +56,7 @@ while(True):
                     row=0
                     #check for 4 diagonal across (left to right)
                     for col in range(diagonalRange,7):
-                        if currentField[col][row]=='X':
+                        if currentField[col][row]==colored('O','red'):
                             Diagonal1Counter+=1
                             if Diagonal1Counter==4:
                                 break
@@ -65,7 +67,7 @@ while(True):
                     col=6
                     #check for 4 diagonal across (right to left)
                     for row in range(diagonalRange,7):
-                        if currentField[col][row]=='X':
+                        if currentField[col][row]==colored('O','red'):
                             Diagonal2Counter+=1
                             if Diagonal2Counter==4:
                                 break
@@ -78,7 +80,7 @@ while(True):
                     col=0
                     #check for 4 diagonal across (left to right)
                     for row in range(diagonalRange,7):
-                        if currentField[col][row]=='X':
+                        if currentField[col][row]==colored('O','red'):
                             Diagonal3Counter+=1
                             if Diagonal3Counter==4:
                                 break
@@ -89,7 +91,7 @@ while(True):
                     row=6
                     #check for 4 diagonal across (right to left)
                     for col in range(diagonalRange,7):
-                        if currentField[col][row]=='X':
+                        if currentField[col][row]==colored('O','red'):
                             Diagonal4Counter+=1
                             if Diagonal4Counter==4:
                                 break
@@ -98,10 +100,10 @@ while(True):
                         row-=1
             else:
                 #If player 2's turn
-                currentField[moveColumn][moveRow]='O'
+                currentField[moveColumn][moveRow]=colored('O','green')
                 #check for 4 vertical across
                 for row in range(6,-1,-1):
-                    if currentField[moveColumn][row]=='O':
+                    if currentField[moveColumn][row]==colored('O','green'):
                         verticalCounter+=1
                         if verticalCounter==4:
                             break
@@ -109,7 +111,7 @@ while(True):
                         verticalCounter = 0
                 #check for 4 horizontal across
                 for col in range(6,-1,-1):
-                    if currentField[col][moveRow]=='O':
+                    if currentField[col][moveRow]==colored('O','green'):
                         horizontalCounter+=1
                         if horizontalCounter==4:
                             break
@@ -122,7 +124,7 @@ while(True):
                     row=0
                     #check for 4 diagonal across (left to right)
                     for col in range(diagonalRange,7):
-                        if currentField[col][row]=='O':
+                        if currentField[col][row]==colored('O','green'):
                             Diagonal1Counter+=1
                             if Diagonal1Counter==4:
                                 break
@@ -134,7 +136,7 @@ while(True):
 
                     #check for 4 diagonal across (right to left)
                     for row in range(diagonalRange,7):
-                        if currentField[col][row]=='O':
+                        if currentField[col][row]==colored('O','green'):
                             Diagonal2Counter+=1
                             if Diagonal2Counter==4:
                                 break
@@ -147,7 +149,7 @@ while(True):
                     col=0
                     #check for 4 diagonal across (left to right)
                     for row in range(diagonalRange,7):
-                        if currentField[col][row]=='O':
+                        if currentField[col][row]==colored('O','green'):
                             Diagonal3Counter+=1
                             if Diagonal3Counter==4:
                                 break
@@ -158,7 +160,7 @@ while(True):
                     row=6
                     #check for 4 diagonal across (right to left)
                     for col in range(diagonalRange,7):
-                        if currentField[col][row]=='O':
+                        if currentField[col][row]==colored('O','green'):
                             Diagonal4Counter+=1
                             if Diagonal4Counter==4:
                                 break
