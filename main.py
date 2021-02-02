@@ -28,14 +28,17 @@ while(True):
     Diagonal4Counter=0
     print('Player '+str(player)+' turn:')
     moveColumn = int(input('Select the column:\n'))
+    if ((moveColumn-1)<0 or (moveColumn-1)>6):
+        print("Invalid column!")
+        break
     for moveRow in range(6,-1,-1):
-        if currentField[moveColumn][moveRow] == ' ':
+        if currentField[moveColumn-1][moveRow] == ' ':
             #If player 1's turn
             if player==1:
-                currentField[moveColumn][moveRow]=colored('O','red')
+                currentField[moveColumn-1][moveRow]=colored('O','red')
                 #check for 4 vertical across
                 for row in range(6,-1,-1):
-                    if currentField[moveColumn][row]==colored('O','red'):
+                    if currentField[moveColumn-1][row]==colored('O','red'):
                         verticalCounter+=1
                         if verticalCounter==4:
                             break
@@ -51,8 +54,8 @@ while(True):
                         horizontalCounter=0
                 #check for 4 diagonal across
                 diagonalRange=0
-                if moveColumn>moveRow:
-                    diagonalRange=moveColumn-moveRow
+                if (moveColumn-1)>moveRow:
+                    diagonalRange=(moveColumn-1)-moveRow
                     row=0
                     #check for 4 diagonal across (left to right)
                     for col in range(diagonalRange,7):
@@ -76,7 +79,7 @@ while(True):
                         col-=1
                    
                 else:
-                    diagonalRange=moveRow-moveColumn
+                    diagonalRange=moveRow-(moveColumn-1)
                     col=0
                     #check for 4 diagonal across (left to right)
                     for row in range(diagonalRange,7):
@@ -100,10 +103,10 @@ while(True):
                         row-=1
             else:
                 #If player 2's turn
-                currentField[moveColumn][moveRow]=colored('O','green')
+                currentField[moveColumn-1][moveRow]=colored('O','green')
                 #check for 4 vertical across
                 for row in range(6,-1,-1):
-                    if currentField[moveColumn][row]==colored('O','green'):
+                    if currentField[moveColumn-1][row]==colored('O','green'):
                         verticalCounter+=1
                         if verticalCounter==4:
                             break
@@ -119,8 +122,8 @@ while(True):
                         horizontalCounter=0
                 #check for 4 diagonal across
                 diagonalRange=0
-                if moveColumn>moveRow:
-                    diagonalRange=moveColumn-moveRow
+                if (moveColumn-1)>moveRow:
+                    diagonalRange=(moveColumn-1)-moveRow
                     row=0
                     #check for 4 diagonal across (left to right)
                     for col in range(diagonalRange,7):
@@ -145,7 +148,7 @@ while(True):
                         col-=1
                    
                 else:
-                    diagonalRange=moveRow-moveColumn
+                    diagonalRange=moveRow-(moveColumn-1)
                     col=0
                     #check for 4 diagonal across (left to right)
                     for row in range(diagonalRange,7):
@@ -165,7 +168,7 @@ while(True):
                             if Diagonal4Counter==4:
                                 break
                         else:
-                            Diagonal45Counter=0
+                            Diagonal4Counter=0
                         row-=1
             break
     if verticalCounter==4 or horizontalCounter ==4 or Diagonal1Counter==4 or Diagonal2Counter==4 or Diagonal3Counter==4 or Diagonal4Counter==4:
